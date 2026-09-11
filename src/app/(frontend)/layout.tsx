@@ -38,7 +38,7 @@ export default async function FrontendLayout({ children }: { children: React.Rea
           <div className="hr"></div>
 
           <footer>
-            <span>© {new Date().getFullYear()} {profile.name || "M3LLAWI"}</span>
+            <span className="footer-copyright">© {new Date().getFullYear()} {profile.name || "M3LLAWI"}</span>
             <span>{profile.based ? profile.based.toUpperCase() : "REMOTE"}</span>
           </footer>
 

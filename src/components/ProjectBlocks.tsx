@@ -7,7 +7,8 @@ type Blocks = NonNullable<Project["content"]>;
 type BlockItem = Blocks[number];
 
 function mediaUrl(m: number | Media | null | undefined) {
-  return m && typeof m === "object" ? m.url : undefined;
+  if (!m || typeof m !== "object") return undefined;
+  return m.sizes?.large?.url || m.url || undefined;
 }
 function mediaAlt(m: number | Media | null | undefined) {
   return m && typeof m === "object" ? m.alt : undefined;

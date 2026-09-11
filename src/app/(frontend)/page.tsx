@@ -37,7 +37,7 @@ export default async function HomePage() {
       client: project.client,
       year: project.year,
       category,
-      coverImageUrl: isMedia ? cover.url : undefined,
+      coverImageUrl: isMedia ? cover.sizes?.card?.url || cover.url : undefined,
       coverImageAlt: isMedia ? cover.alt : undefined,
       pattern: PATTERNS[i % PATTERNS.length],
     };
