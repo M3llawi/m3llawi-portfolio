@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getPayload } from "payload";
 import config from "@payload-config";
+import { RichText } from "@payloadcms/richtext-lexical/react";
 import type { Media } from "@/payload-types";
 
 export const metadata: Metadata = {
@@ -31,7 +32,7 @@ export default async function AboutPage() {
   const payload = await getPayload({ config });
   const profile = await payload.findGlobal({ slug: "profile" });
 
-  const bio = profile.bio && profile.bio.length > 0 ? profile.bio : null;
+  const bio = profile.bio;
   const skills = profile.skills && profile.skills.length > 0 ? profile.skills : null;
   const photo = profile.photo as Media | number | null | undefined;
   const photoUrl = photo && typeof photo === "object" ? photo.url : undefined;
@@ -56,7 +57,7 @@ export default async function AboutPage() {
           <div className="about-text">
             <div className="about-copy">
               {bio ? (
-                bio.map((row, i) => <p key={i}>{row.paragraph}</p>)
+                <RichText data={bio} />
               ) : (
                 <p>Add your bio in the admin at /admin under Globals → Profile.</p>
               )}

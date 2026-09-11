@@ -1,4 +1,5 @@
 import type { GlobalConfig } from "payload";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
 
 export const Profile: GlobalConfig = {
   slug: "profile",
@@ -34,15 +35,9 @@ export const Profile: GlobalConfig = {
     },
     {
       name: "bio",
-      type: "array",
-      admin: { description: "About page copy, one paragraph per row." },
-      fields: [
-        {
-          name: "paragraph",
-          type: "textarea",
-          required: true,
-        },
-      ],
+      type: "richText",
+      editor: lexicalEditor(),
+      admin: { description: "About page copy — bold, italic, and paragraphs supported." },
     },
     {
       name: "skills",
