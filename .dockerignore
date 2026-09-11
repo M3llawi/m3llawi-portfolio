@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+build
+media
+.env
+.env.*
+!.env.example
+.git
+.gitignore
+npm-debug.log*
+*.tsbuildinfo
+Dockerfile
+.dockerignore
+docker-compose.yml
